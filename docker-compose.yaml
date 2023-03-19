@@ -1,11 +1,14 @@
 version: "3"
 
 services:
-  my_db:
-    image: postgres:13
+  my_mysql:
+    image: mysql:8.0
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: app
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: app
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: pass
     ports:
-      - 65432:5432
+      - 43306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
